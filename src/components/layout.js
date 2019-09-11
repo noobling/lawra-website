@@ -11,6 +11,12 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import styled from "@emotion/styled-base"
+
+const Footer = styled("footer")`
+  margin-top: 2rem;
+  bottom: 0;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,11 +41,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer>
+          Built by <a href="https://codersforcauses.org">Coders for Causes</a> ❤
+        </Footer>
       </div>
     </>
   )
