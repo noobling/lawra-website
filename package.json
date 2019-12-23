@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@emotion/core": "10.0.22",
-    "@emotion/styled": "10.0.23",
+    "@emotion/core": "10.0.27",
+    "@emotion/styled": "10.0.27",
     "gatsby": "2.18.17",
     "gatsby-image": "2.2.37",
     "gatsby-plugin-emotion": "4.1.18",
