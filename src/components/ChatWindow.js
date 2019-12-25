@@ -5,6 +5,7 @@ import QuestionBubble from "../components/QuestionBubble"
 import decisiontree from "../decisiontree"
 import OptionBubbles from "./OptionBubbles"
 import ResponseBubble from "./ResponseBubble"
+import MultiSelectOptions from "./MultiSelectOptions"
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +39,10 @@ const Button = styled.button`
   }
 `
 
+const StyledQuestionBubble = styled(props => <QuestionBubble {...props} />)`
+  margin: 0 0 1rem 0;
+`
+
 const getItem = id => {
   return decisiontree.find(item => item.id === id)
 }
@@ -45,6 +50,7 @@ const getItem = id => {
 const ChatWindow = () => {
   const [currentOptions, setCurrentOptions] = useState(getItem("initOptions"))
   const [history, setHistory] = useState([])
+  const [multiSelectValues, setMultiSelectValues] = useState([])
 
   const onOptionClick = async option => {
     // Add user chosen option to history
@@ -52,7 +58,7 @@ const ChatWindow = () => {
       ..._history,
       { currentOptions, selectedOption: option },
     ])
-    console.log(option)
+
     // Get next item to display back to user
     const nextItem = getItem(option.trigger)
     if (!nextItem) {
@@ -73,6 +79,23 @@ const ChatWindow = () => {
   const reset = () => {
     setCurrentOptions(getItem("initOptions"))
     setHistory([])
+    setMultiSelectValues([])
+  }
+
+  const multiSelectNext = () => {
+    if (currentOptions.rule === "2 or more" && multiSelectValues.length >= 2) {
+      const selectedOptions = currentOptions.options.filter(option =>
+        multiSelectValues.find(value => option.value === value)
+      )
+
+      const label = selectedOptions.reduce(
+        (acc, option) => `${acc}${acc ? ", " : ""}${option.label}`,
+        ""
+      )
+      onOptionClick({ trigger: currentOptions.pass, label })
+    } else {
+      onOptionClick({ trigger: currentOptions.fail })
+    }
   }
 
   return (
@@ -81,7 +104,7 @@ const ChatWindow = () => {
         return (
           <span key={index}>
             {item.currentOptions.question && (
-              <QuestionBubble label={item.currentOptions.question} />
+              <StyledQuestionBubble label={item.currentOptions.question} />
             )}
 
             <ResponseBubble
@@ -108,7 +131,25 @@ const ChatWindow = () => {
         </AnswerContainer>
       )}
 
-      {!currentOptions.end && (
+      {!currentOptions.end && currentOptions.type === "multiselect" && (
+        <>
+          <MultiSelectOptions
+            value={currentOptions}
+            multiSelectValues={multiSelectValues}
+            setMultiSelectValues={setMultiSelectValues}
+          />
+          <Button
+            css={css`
+              margin-left: auto;
+            `}
+            onClick={multiSelectNext}
+          >
+            Next
+          </Button>
+        </>
+      )}
+
+      {!currentOptions.end && currentOptions.type !== "multiselect" && (
         <OptionBubbles
           options={currentOptions.options}
           onOptionClick={onOptionClick}
@@ -119,7 +160,7 @@ const ChatWindow = () => {
         css={css`
           margin-left: auto;
         `}
-        onClick={() => reset()}
+        onClick={reset}
       >
         Restart
       </Button>

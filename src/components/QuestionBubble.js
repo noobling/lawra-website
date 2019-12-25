@@ -15,9 +15,9 @@ const Text = styled.p`
   margin: 0;
 `
 
-const QuestionBubble = ({ label }) => {
+const QuestionBubble = ({ label, ...rest }) => {
   return (
-    <Container>
+    <Container {...rest}>
       <Text>{label}</Text>
     </Container>
   )
