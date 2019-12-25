@@ -44,31 +44,20 @@ const getItem = id => {
 
 const ChatWindow = () => {
   const [currentOptions, setCurrentOptions] = useState(getItem("initOptions"))
-  const [isEnded, setIsEnded] = useState(false)
-  const [history, setHistory] = useState([
-    { type: "question", ...getItem("intro") },
-  ])
+  const [history, setHistory] = useState([])
 
-  const onOptionClick = option => {
+  const onOptionClick = async option => {
     // Add user chosen option to history
-    setHistory([...history, { ...option, type: "response" }])
+    setHistory(_history => [
+      ..._history,
+      { currentOptions, selectedOption: option },
+    ])
+    console.log(option)
     // Get next item to display back to user
     const nextItem = getItem(option.trigger)
     if (!nextItem) {
       // TODO: handle when no next option is available
       alert("missing this part of the decision tree")
-    }
-    // Check if next item is the last item
-    else if (nextItem.end) {
-      setCurrentOptions(nextItem)
-      setIsEnded(true)
-    }
-    // Check if next item is a question
-    else if (nextItem.message) {
-      // Ask the question
-      setHistory([...history, { ...nextItem, type: "question" }])
-      // Present the options to the user
-      setCurrentOptions(getItem(nextItem.trigger))
     }
     // Present options to the user
     else {
@@ -82,51 +71,58 @@ const ChatWindow = () => {
   })
 
   const reset = () => {
-    setIsEnded(false)
     setCurrentOptions(getItem("initOptions"))
-    setHistory([{ type: "question", ...getItem("intro") }])
+    setHistory([])
   }
 
   return (
     <Container>
       {history.map((item, index) => {
-        return item.type === "question" ? (
-          <QuestionBubble key={index} label={item.message} />
-        ) : (
-          <ResponseBubble
-            css={css`
-              margin-left: auto;
-            `}
-            key={index}
-            response={item}
-          />
+        return (
+          <span key={index}>
+            {item.currentOptions.question && (
+              <QuestionBubble label={item.currentOptions.question} />
+            )}
+
+            <ResponseBubble
+              css={css`
+                margin-left: auto;
+              `}
+              response={item.selectedOption}
+            />
+          </span>
         )
       })}
 
-      {isEnded ? (
-        <>
-          <AnswerContainer
-            css={css`
-              margin-top: 2rem;
-            `}
-          >
-            {currentOptions.component}
-          </AnswerContainer>
-          <Button
-            css={css`
-              margin-left: auto;
-            `}
-            onClick={() => reset()}
-          >
-            Restart
-          </Button>
-        </>
-      ) : (
+      {currentOptions.question && (
+        <QuestionBubble label={currentOptions.question} />
+      )}
+
+      {currentOptions.end && (
+        <AnswerContainer
+          css={css`
+            margin-top: 2rem;
+          `}
+        >
+          {currentOptions.component}
+        </AnswerContainer>
+      )}
+
+      {!currentOptions.end && (
         <OptionBubbles
           options={currentOptions.options}
           onOptionClick={onOptionClick}
         />
       )}
+
+      <Button
+        css={css`
+          margin-left: auto;
+        `}
+        onClick={() => reset()}
+      >
+        Restart
+      </Button>
     </Container>
   )
 }
