@@ -28,7 +28,7 @@ export default [
         label: "Dividing Property and Possessions",
         trigger: "Peel&NSCLS",
       },
-      { value: 7, label: "Child Support", trigger: "Peel" },
+      { value: 7, label: "Child Support", trigger: "peelEligibilityLocation" },
       {
         value: 8,
         label: "Restraining Orders",

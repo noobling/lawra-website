@@ -39,6 +39,13 @@ const Button = styled.button`
   }
 `
 
+const Input = styled.input`
+  border: 4px solid #e28c49;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  max-width: 340px;
+`
+
 const StyledQuestionBubble = styled(props => <QuestionBubble {...props} />)`
   margin: 0 0 1rem 0;
 `
@@ -51,6 +58,7 @@ const ChatWindow = () => {
   const [currentOptions, setCurrentOptions] = useState(getItem("initOptions"))
   const [history, setHistory] = useState([])
   const [multiSelectValues, setMultiSelectValues] = useState([])
+  const [inputValue, setInputValue] = useState()
 
   const onOptionClick = async option => {
     // Add user chosen option to history
@@ -80,6 +88,7 @@ const ChatWindow = () => {
     setCurrentOptions(getItem("initOptions"))
     setHistory([])
     setMultiSelectValues([])
+    setInputValue("")
   }
 
   const multiSelectNext = () => {
@@ -95,6 +104,22 @@ const ChatWindow = () => {
       onOptionClick({ trigger: currentOptions.pass, label })
     } else {
       onOptionClick({ trigger: currentOptions.fail })
+    }
+  }
+
+  const inputNext = () => {
+    if (
+      currentOptions.rule.includes("match") &&
+      currentOptions.rule.split(" ")[1] === inputValue
+    ) {
+      onOptionClick({ trigger: currentOptions.pass, label: inputValue })
+    } else if (
+      currentOptions.rule === "in" &&
+      currentOptions.in.some(val => val === inputValue)
+    ) {
+      onOptionClick({ trigger: currentOptions.pass, label: inputValue })
+    } else {
+      onOptionClick({ trigger: currentOptions.fail, label: inputValue })
     }
   }
 
@@ -149,7 +174,27 @@ const ChatWindow = () => {
         </>
       )}
 
-      {!currentOptions.end && currentOptions.type !== "multiselect" && (
+      {!currentOptions.end && currentOptions.type === "input" && (
+        <>
+          <Input
+            css={css`
+              margin-left: auto;
+            `}
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+          />
+          <Button
+            css={css`
+              margin-left: auto;
+            `}
+            onClick={inputNext}
+          >
+            Next
+          </Button>
+        </>
+      )}
+
+      {!currentOptions.end && !currentOptions.type && (
         <OptionBubbles
           options={currentOptions.options}
           onOptionClick={onOptionClick}

@@ -21,6 +21,8 @@ import youngPeople from "./youngPeople"
 import law from "./law"
 import product from "./product"
 import elsEligibility from "./elsEligibility"
+import peelEligibility from "./peelEligibility"
+import NSCLSEligibility from "./NSCLSEligibility"
 
 export default [
   {
@@ -90,6 +92,8 @@ export default [
   ...law,
   ...product,
   ...elsEligibility,
+  ...peelEligibility,
+  ...NSCLSEligibility,
   {
     id: "ineligible",
     component: <Ineligible />,

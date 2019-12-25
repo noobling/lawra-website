@@ -5,12 +5,12 @@ export default [
       {
         value: 1,
         label: "Borrowing money and debt",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 2,
         label: "Centrelink/Welfare Payments",
-        trigger: "Peel",
+        trigger: "peelEligibilityLocation",
       },
       {
         value: 3,
@@ -25,7 +25,7 @@ export default [
       {
         value: 5,
         label: "Going to court over money",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 6,

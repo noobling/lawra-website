@@ -15,7 +15,7 @@ export default [
       {
         value: 3,
         label: "Going to court for a criminal charge",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
@@ -30,22 +30,22 @@ export default [
       {
         value: 6,
         label: "Prisoner information",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 7,
         label: "Proceeds of crime - frozen assets",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 8,
         label: "Rehearing and appeals",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 9,
         label: "Under arrest and police powers",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 10,

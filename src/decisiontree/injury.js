@@ -15,7 +15,7 @@ export default [
       {
         value: 3,
         label: "Making medical decisions",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
     ],
   },

@@ -5,22 +5,22 @@ export default [
       {
         value: 1,
         label: "Buying a Car",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 2,
         label: "Car and personal loans",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 3,
         label: "Car accidents",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
         label: "Driver's licences",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 5,

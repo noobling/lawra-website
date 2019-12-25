@@ -5,7 +5,7 @@ export default [
       {
         value: 1,
         label: "Complaints and consumers",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 2,
@@ -25,17 +25,17 @@ export default [
       {
         value: 5,
         label: "Privacy and Freedom of Information",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 6,
         label: "Under arrest and police powers",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 7,
         label: "Young people",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
     ],
   },

@@ -5,22 +5,22 @@ export default [
       {
         value: 1,
         label: "Going to court",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 2,
         label: "Mediation and dispute resolution",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 3,
         label: "Negotiation",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
         label: "Other ways to sort it out",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 5,

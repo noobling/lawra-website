@@ -10,17 +10,17 @@ export default [
       {
         value: 2,
         label: "Making medical decisions",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 3,
         label: "Mental health",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
         label: "National Disability Insurance Scheme",
-        trigger: "Peel",
+        trigger: "peelEligibilityLocation",
       },
       {
         value: 5,

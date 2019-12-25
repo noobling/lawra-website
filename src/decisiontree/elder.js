@@ -11,7 +11,7 @@ export default [
       {
         value: 2,
         label: "No",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
     ],
   },

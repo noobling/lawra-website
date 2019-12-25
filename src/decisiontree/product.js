@@ -5,22 +5,22 @@ export default [
       {
         value: 1,
         label: "Car",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 2,
         label: "Other product",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 3,
         label: "Other service",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
         label: "Phone",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
     ],
   },

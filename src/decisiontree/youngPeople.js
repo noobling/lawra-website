@@ -10,17 +10,17 @@ export default [
       {
         value: 2,
         label: "Sex and the law",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 3,
         label: "Your rights",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 4,
         label: "Police and the Courts",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 5,

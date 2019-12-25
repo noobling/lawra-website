@@ -15,7 +15,7 @@ export default [
       {
         value: 3,
         label: "Dealing with neighbours",
-        trigger: "Peel",
+        trigger: "peelEligibilityLocation",
       },
       {
         value: 4,
@@ -30,7 +30,7 @@ export default [
       {
         value: 6,
         label: "Property Damage",
-        trigger: "NSCLS",
+        trigger: "NSCLSEligibilityLocation",
       },
       {
         value: 7,
